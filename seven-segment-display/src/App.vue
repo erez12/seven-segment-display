@@ -1,85 +1,71 @@
 <template>
   <div id="app">
-    <digit :value="h1" class="dig" />
-    <digit :value="h2" class="dig" />
-    <div class="dots blink_me">
-      <div class="circle"></div>
-      <div class="circle"></div>
+    <div class="calculator center">
+      <display/>
+
+      <div class="actions row">
+        <div class="numbers col">
+          <div class="row">
+            <ActionButton value='7'/><ActionButton value='8'/><ActionButton value='9'/>
+          </div>
+          <div class="row">
+            <ActionButton value='4'/><ActionButton value='5'/><ActionButton value='6'/>
+          </div>
+          <div class="row">
+            <ActionButton value='1'/><ActionButton value='2'/><ActionButton value='3'/>
+          </div>
+          <div class="row">
+            <ActionButton value='.'/><ActionButton value='0'/><ActionButton value='DEL'/>
+          </div>
+        </div>
+
+        <div class="operations">
+          <div class="col">
+            <ActionButton value='/'/><ActionButton value='x'/><ActionButton value='-'/><ActionButton value='+'/><ActionButton value='='/>
+          </div>
+        </div>
+      </div>
     </div>
-    <digit :value="m1" class="dig" />
-    <digit :value="m2" class="dig" />
-    <div class="dots blink_me">
-      <div class="circle"></div>
-      <div class="circle"></div>
-    </div>
-    <digit :value="s1" class="dig" />
-    <digit :value="s2" class="dig" />
   </div>
 </template>
 
 <script>
+import Display from './components/Display.vue'
 import Digit from './components/Digit.vue'
-function addZero(i) {
-    if (i < 10) {
-        i = "0" + i;
-    }
-    return i;
-}
+import ActionButton from './components/ActionButton.vue'
 export default {
   name: 'app',
   components: {
-    Digit
-  },
-  data: function () {
-    return {
-      h1:0,
-      h2:0,
-      m1:0,
-      m2:0,
-      s1:0,
-      s2:0
-    };
-  },
-  mounted: function () {
-    setInterval(function (){
-      let d = new Date();
-      var h = String(addZero(d.getHours()));
-      this.h1 = h[0];this.h2 = h[1];
-      var m = String(addZero(d.getMinutes()));
-      this.m1 = m[0];this.m2 = m[1];
-      var s = String(addZero(d.getSeconds()));
-      this.s1 = s[0];this.s2 = s[1];
-    }.bind(this), 1000);
+    Display,
+    Digit,
+    ActionButton
   }
-
 }
 </script>
 
 <style>
-#app {
-  display: flex;
-}
-.dig{
-  margin-right: 50px;
-}
-.dots{
-  padding-top:110px
-}
-.circle {
-  width: 25px;
-  height: 25px;
-  background: #990000;
-  border-radius: 50%;
-  box-shadow: 0px 0px 25px #990000;
-  margin-bottom: 40px;
-}
-.blink_me {
-  animation: blinker 0.5s linear infinite;
-}
-
-@keyframes blinker {
-  50% {
-    opacity: 0.2;
+  .center {
+    margin: auto;
+    width: 300px;
+    border: 3px solid #73AD21;
+    padding: 10px;
   }
-}
+  .calculator{
+    display: flex;
+    flex-direction: column;
+  }
+  .row{
+    display: flex;
+    flex-direction: row;
+  }
+  .col{
+    display: flex;
+    flex-direction: column;
+  }
+  .actions{
+    padding-top: 0.5em
+  }
+  .numbers .row{
+    height: 5.3em;
+  }
 </style>

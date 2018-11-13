@@ -1,13 +1,13 @@
 <template>
 
   <div class="digit">
-    <div v-if="sectionA" class="segment A"></div>
-    <div v-if="sectionB" class="segment B"></div>
-    <div v-if="sectionC" class="segment C"></div>
-    <div v-if="sectionD" class="segment D"></div>
-    <div v-if="sectionE" class="segment E"></div>
-    <div v-if="sectionF" class="segment F"></div>
-    <div v-if="sectionG" class="segment G"></div>
+    <div v-bind:class="{ active: sectionA }" class="segment A"></div>
+    <div v-bind:class="{ active: sectionB }" class="segment B"></div>
+    <div v-bind:class="{ active: sectionC }" class="segment C"></div>
+    <div v-bind:class="{ active: sectionD }" class="segment D"></div>
+    <div v-bind:class="{ active: sectionE }" class="segment E"></div>
+    <div v-bind:class="{ active: sectionF }" class="segment F"></div>
+    <div v-bind:class="{ active: sectionG }" class="segment G"></div>
   </div>
 
 </template>
@@ -47,53 +47,54 @@ export default {
 <style scoped>
   .digit{
     position: relative;
-    height:285px;
-    width: 155px;
   }
   .segment {
-    height: 125px;
-    width: 15px;
-    background-color: #990000;
+    height: 40%;
+    width: 13%;
+    background-color: #f4f4f4;
     border-radius: 9999px;
-    box-shadow: 0px 0px 25px #990000;
+    box-shadow: 0px 0px 10px #f4f4f4;
   }
-
+  .active {
+    background-color: #4f4f4f;
+     box-shadow: 0px 0px 10px #f4f4f4;
+  }
   .A {
     position: absolute;
-    top: -45px;
-    left: 90px;
+    top: -15%;
+    left: 58%;
     transform: rotate(90deg);
   }
   .B {
     position: absolute;
-    top: 20px;
-    left: 160px;
+    top: 7%;
+    left: 103%;
   }
   .C {
     position: absolute;
-    top: 150px;
-    left: 160px;
+    top: 52.5%;
+    left: 103%;
   }
   .D {
     position: absolute;
-    top: 215px;
-    left: 90px;
+    top: 75%;
+    left: 58%;
     transform: rotate(90deg);
   }
   .E {
     position: absolute;
-    top: 150px;
-    left: 20px;
+    top: 52.5%;
+    left: 13%;
   }
   .F {
     position: absolute;
-    top: 20px;
-    left: 20px;
+    top: 7%;
+    left: 13%;
   }
   .G {
     position: absolute;
-    top: 85px;
-    left: 90px;
+    top: 30%;
+    left: 58%;
     transform: rotate(90deg);
   }
 </style>
